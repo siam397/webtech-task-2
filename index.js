@@ -1,13 +1,12 @@
+require('dotenv').config();
 const express = require("express")
-const sql = require('./db/databaseConfig')
+const createCommands = require('./db/dbCommands/createCommands')
 const app = express();
+
 app.use(express.json())
 
 //routes
 const authRoutes = require('./routes/authRoutes')
-
-
-console.log(sql());
 
 app.use(authRoutes)
 
@@ -17,6 +16,8 @@ app.get("/", (req, res) => {
     })
 })
 
-app.listen('3000', () => {
+
+app.listen('3000', async () => {
+    createCommands.createUserTableIfDoesntExist();
     console.log("server started")
 })
