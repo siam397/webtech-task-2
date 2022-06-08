@@ -3,6 +3,7 @@ const express = require("express")
 const createCommands = require('./db/dbCommands/createCommands')
 const authRoutes = require('./routes/authRoutes')
 const newsRoutes = require('./routes/newsRoutes')
+const userRoutes = require('./routes/userRoutes')
 const authMiddleware = require('./middlewares/authMiddleware')
 const app = express();
 
@@ -14,11 +15,7 @@ app.use(authRoutes)
 app.use('/news',
     authMiddleware.protectRoute, newsRoutes)
 
-app.get("/", (req, res) => {
-    res.send({
-        info: "works"
-    })
-})
+app.use('/user', authMiddleware.protectRoute, userRoutes)
 
 
 app.listen('3000', async () => {

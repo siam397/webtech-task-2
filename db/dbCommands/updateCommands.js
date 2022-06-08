@@ -6,3 +6,10 @@ module.exports.updateNews = async (newsId, news) => {
         where id = ${newsId}
         `
 }
+
+module.exports.updateUser = async (userId, user) => {
+    return sql`
+        update users set ${sql(user, 'username', 'email', 'password')}
+        where id =${userId}
+        `
+}

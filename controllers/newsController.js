@@ -2,6 +2,9 @@ const insertCommands = require('../db/dbCommands/insertCommands')
 const queryCommands = require('../db/dbCommands/queryCommands')
 const updateCommands = require('../db/dbCommands/updateCommands')
 const deleteCommands = require('../db/dbCommands/deleteCommands')
+const NodeCache = require("node-cache");
+const myCache = new NodeCache();
+
 module.exports.createNews = async (req, res) => {
     const title = req.body.title;
     const content = req.body.content;
@@ -17,13 +20,26 @@ module.exports.createNews = async (req, res) => {
 }
 
 module.exports.getNews = async (req, res) => {
-    const result = await queryCommands.getNews()
+    const newsCache = myCache.get("newsCache");
+
+    if (newsCache == undefined) {
+        const result = await queryCommands.getNews()
+        let cache = myCache.set("newsCache", Object.values(result), 100);
+        return res.json({
+            statusCode: 200,
+            data: {
+                news: Object.values(result)
+            }
+        })
+    }
+
     return res.json({
         statusCode: 200,
         data: {
-            news: Object.values(result)
+            news: newsCache
         }
     })
+
 }
 
 module.exports.getNewsById = async (req, res) => {
