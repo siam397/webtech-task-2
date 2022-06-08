@@ -24,7 +24,7 @@ module.exports.getNews = async (req, res) => {
 
     if (newsCache == undefined) {
         const result = await queryCommands.getNews()
-        let cache = myCache.set("newsCache", Object.values(result), 100);
+        let cache = myCache.set("newsCache", Object.values(result), 1000);
         return res.json({
             statusCode: 200,
             data: {
