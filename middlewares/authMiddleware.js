@@ -8,9 +8,9 @@ app.use(express.json());
 exports.protectRoute = (req, res, next) => {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1];
-    if (token === null) return;
+    if (!token) return res.json({ statusCode: 404, message: "Unauthorized" })
     jwt.verify(token, process.env.ACCESSKEY, (err, user) => {
-        if (err) return;
+        if (err) return res.json({ statusCode: 404, message: "Couldn't authenticate" })
         req.user = user;
         next();
     });
