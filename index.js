@@ -9,6 +9,13 @@ const app = express();
 
 app.use(express.json())
 
+app.get("/sample-docker", (req, res) => {
+
+    res.send({
+        name: "Maliketh",
+        title:"Black Blade"
+    })
+})
 
 
 app.use(authRoutes)
@@ -19,7 +26,8 @@ app.use('/user', authMiddleware.protectRoute, userRoutes)
 
 
 app.listen('3000', async () => {
-    createCommands.createUserTableIfDoesntExist();
-    createCommands.createNewsTableIfDoesntExist()
+    await createCommands.createUserTableIfDoesntExist();
+    await createCommands.createNewsTableIfDoesntExist()
     console.log("server started")
 })
+
