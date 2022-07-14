@@ -15,5 +15,7 @@ services:
     build: .
     depends_on:
       - pg-server
+    volumes:
+      - .:/app/server
     ports:
-      - "3000:3000"
+      - "8080:8080"

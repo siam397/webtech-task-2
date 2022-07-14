@@ -3,7 +3,7 @@ FROM node:alpine
 
 #adding dependency
 
-WORKDIR /usr/app
+WORKDIR /app/server
 
 COPY package.json ./
 
