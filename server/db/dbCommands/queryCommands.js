@@ -12,28 +12,28 @@ module.exports.getUserByEmail = async (email) => {
     return await sql`select * from users where email=${email}`
 }
 
-module.exports.getNews = async () => {
+module.exports.getBlogs = async () => {
     return await sql
-        `select news.id,title,content,username,user_id 
-        from news
-        join users on users.id=news.user_id
+        `select blogs.id,title,content,username,user_id, createdAt
+        from blogs
+        join users on users.id=blogs.user_id
         `
 }
 
-module.exports.getNewsById = async (newsId) => {
+module.exports.getBlogsById = async (blogId) => {
     return await sql
-        `select news.id,title,content,username,user_id 
-        from news
-        join users on users.id=news.user_id
-        where news.id=${newsId}
+        `select blogs.id,title,content,username,user_id ,createdAt
+        from blogs
+        join users on users.id=blogs.user_id
+        where blogs.id=${blogId}
         `
 }
 
-module.exports.getNewsOfSingleUser = async (userId) => {
+module.exports.getBlogsOfSingleUser = async (userId) => {
     return await sql
-        `select news.id,title,content,username,user_id 
-        from news
-        join users on users.id=news.user_id
+        `select blogs.id,title,content,username,user_id, createdAt 
+        from blogs
+        join users on users.id=blogs.user_id
         where users.id=${userId}
         `
 }

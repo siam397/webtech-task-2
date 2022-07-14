@@ -1,8 +1,8 @@
 const sql = require('../databaseConfig')
 
-module.exports.deleteNews = async (newsId) => {
+module.exports.deleteBlogs = async (blogId) => {
     return sql`
-        delete from news 
-        where id=${newsId}
+        delete from blogs 
+        where id=${blogId}
     `
 }

@@ -1,23 +1,23 @@
 const express = require('express')
 const { body } = require('express-validator');
-const newsController = require('../controllers/blogController')
+const blogController = require('../controllers/blogController')
 const authMiddleware = require('../middlewares/authMiddleware')
 const router = express.Router();
 
 router.post('/',
     body('title').notEmpty().withMessage("title cannot be empty"),
     body('content').notEmpty().withMessage('content cannot be empty'),
-    newsController.createNews
+    blogController.createBlogs
 )
 
-router.get('/', newsController.getNews)
+router.get('/', blogController.getBlogs)
 
-router.route('/:newsId')
-    .get(newsController.getNewsById)
-    .put(newsController.updateNews)
-    .delete(newsController.deleteNews)
+router.route('/:blogsId')
+    .get(blogController.getBlogsById)
+    .put(blogController.updateBlogs)
+    .delete(blogController.deleteBlogs)
 
-router.get('/user', newsController.getNewsOfCurrentUser)
-router.get("/user/:userId", newsController.getNewsOfSingleUser)
+router.get('/user', blogController.getBlogsOfCurrentUser)
+router.get("/user/:userId", blogController.getBlogsOfSingleUser)
 
 module.exports = router

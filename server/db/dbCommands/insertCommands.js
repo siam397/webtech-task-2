@@ -12,12 +12,12 @@ module.exports.insertUser = async (username, email, password) => {
     return result
 }
 
-module.exports.insertNews = async (title, content, userId) => {
+module.exports.insertBlog = async (title, content, userId, createdAt) => {
     const result = await sql`
-            insert into news (
-                user_id, title, content
+            insert into blogs (
+                user_id, title, content, createdAt
             ) values (
-                ${userId}, ${title}, ${content}
+                ${userId}, ${title}, ${content}, ${createdAt}
             )
             returning *
             `

@@ -1,9 +1,9 @@
 const sql = require('../databaseConfig')
 
-module.exports.updateNews = async (newsId, news) => {
+module.exports.updateBlogs = async (blogsId, blog) => {
     return sql`
-        update news set ${sql(news, 'title', 'content')}
-        where id = ${newsId}
+        update blogs set ${sql(blog, 'title', 'content')}
+        where id = ${blogsId}
         `
 }
 
