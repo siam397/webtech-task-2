@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import jwt from 'jwt-decode'
 import Cookie from "universal-cookie"
-import InfoButton from "Components/InfoButton"
 import Alert from "Components/Alert"
 
 const cookie = new Cookie()
@@ -63,10 +62,14 @@ const BlogDetails = () => {
                 <p className="font-medium text-lg">{blog ? blog['content'] : null}</p>
                 {ifBlogOfUser ?
                     <div className="flex flex-row gap-8">
-                        <button onClick={() => { navigate(`/blogEdit/${id}`) }} className="mt-20 inline-block px-8 py-3 text-sm font-medium text-indigo-600 transition border border-current rounded hover:scale-110 hover:shadow-xl active:text-indigo-500 focus:outline-none focus:ring">
+                        <button
+                            onClick={() => { navigate(`/blogEdit/${id}`) }}
+                            className="mt-20 inline-block px-8 py-3 text-sm font-medium text-indigo-600 transition border border-current rounded hover:scale-110 hover:shadow-xl active:text-indigo-500 focus:outline-none focus:ring">
                             Update
                         </button>
-                        <button onClick={deleteBlog} className="mt-20 inline-block px-8 py-3 text-sm font-medium text-red-600 transition border border-current rounded hover:scale-110 hover:shadow-xl active:text-red-500 focus:outline-none focus:ring">
+                        <button
+                            onClick={deleteBlog}
+                            className="mt-20 inline-block px-8 py-3 text-sm font-medium text-red-600 transition border border-current rounded hover:scale-110 hover:shadow-xl active:text-red-500 focus:outline-none focus:ring">
                             Delete
                         </button>
 
