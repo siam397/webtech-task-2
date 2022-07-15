@@ -12,12 +12,12 @@ router.post('/',
 
 router.get('/', blogController.getBlogs)
 
+router.get('/user', blogController.getBlogsOfCurrentUser)
 router.route('/:blogsId')
     .get(blogController.getBlogsById)
     .put(blogController.updateBlogs)
     .delete(blogController.deleteBlogs)
 
-router.get('/user', blogController.getBlogsOfCurrentUser)
 router.get("/user/:userId", blogController.getBlogsOfSingleUser)
 
 module.exports = router

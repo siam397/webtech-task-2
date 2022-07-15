@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Blog = (props) => {
     return (
-        <a
+        <Link
             className="relative block p-8 overflow-hidden border border-gray-100 rounded-lg w-96 hover:shadow-lg hover:bg-gray-100"
-            href=""
+            to={"/blog/" + props.id}
         >
             <span
                 className="absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
@@ -32,7 +33,7 @@ const Blog = (props) => {
                 </div>
 
             </dl>
-        </a>
+        </Link>
 
 
     )

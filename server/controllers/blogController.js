@@ -11,6 +11,7 @@ module.exports.createBlogs = async (req, res) => {
     const userId = req.user.id
     const date = new Date();
     const result = await (await insertCommands.insertBlog(title, content, userId, date))[0]
+    myCache.set("blogsCache", undefined, 1000);
     return res.json({
         statusCode: 201,
         data: {
@@ -48,7 +49,7 @@ module.exports.getBlogsById = async (req, res) => {
     return res.json({
         statusCode: 200,
         data: {
-            blogs: result['0']
+            blog: result['0']
         }
     })
 }
@@ -75,7 +76,7 @@ module.exports.getBlogsOfCurrentUser = async (req, res) => {
 
 module.exports.updateBlogs = async (req, res) => {
     const result = await (await queryCommands.getBlogsById(req.params.blogsId))['0']
-
+    myCache.set("blogsCache", undefined, 1000);
     if (req.user.id !== result.user_id) {
         return res.json({
             statusCode: 404,
@@ -90,6 +91,7 @@ module.exports.updateBlogs = async (req, res) => {
     updatedNews.content = req.body.content ?? result.content;
     console.log(updatedNews);
     const updatedNewsResult = await updateCommands.updateBlogs(req.params.blogsId, updatedNews)
+    
     return res.json({
         statusCode: 202,
         data: {
@@ -108,7 +110,8 @@ module.exports.deleteBlogs = async (req, res) => {
             message: "You cant delete the blogs of someone else"
         })
     }
-    const deleteResult = await deleteCommands.deleteBlogs(req.params.blogsId)
+    const deleteResult = await deleteCommands.deleteBlogs(req.params.blogsId);
+    myCache.set("blogsCache", undefined, 1000);
     console.log(deleteResult);
     return res.json({
         statusCode: 204

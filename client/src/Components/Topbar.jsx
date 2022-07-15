@@ -35,7 +35,7 @@ const Topbar = () => {
                         className="hidden lg:uppercase lg:text-gray-500 lg:tracking-wide lg:font-bold lg:text-xs lg:space-x-4 lg:flex"
                     >
                         <NavLink
-                            to="/"
+                            to="/blogs/all"
                             className={({ isActive }) =>
                                 isActive ? "block h-16 leading-[4rem] border-b-4 text-red-700 border-current" : "block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
                             }
@@ -47,14 +47,14 @@ const Topbar = () => {
                             className={({ isActive }) =>
                                 isActive ? "block h-16 leading-[4rem] border-b-4 text-red-700 border-current" : "block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
                             }
-                            to="/newBlog"
+                            to="/blogEdit/new"
                         // className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
                         >
                             New Blog
                         </NavLink>
 
                         <NavLink
-                            to="/myBlogs"
+                            to="/blogs/currentUser"
                             className={({ isActive }) =>
                                 isActive ? "block h-16 leading-[4rem] border-b-4 text-red-700 border-current" : "block h-16 leading-[4rem] border-b-4 border-transparent hover:text-red-700 hover:border-current"
                             } >
