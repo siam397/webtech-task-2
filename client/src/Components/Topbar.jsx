@@ -1,7 +1,16 @@
-import React from "react"
-import { Link, NavLink } from "react-router-dom"
-
+import React from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import Cookie from 'universal-cookie'
+const cookie = new Cookie()
 const Topbar = () => {
+
+    const navigate = useNavigate()
+
+    const logout = () => {
+        cookie.remove("accessToken")
+        navigate("/login")
+    }
+
     return (
         <header className="border-b border-gray-100">
             <div
@@ -92,27 +101,23 @@ const Topbar = () => {
                             </span>
 
                             <span className="hidden sm:block">
-                                <a
-                                    href="/search"
+                                <button
+                                    onClick={logout}
                                     className="block p-6 border-b-4 border-transparent hover:border-red-700"
                                 >
-                                    <svg
-                                        className="w-4 h-4"
+                                    <svg className="w-4 h-4"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                        />
+                                        stroke="currentColor">
+
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                                        <path d="M7 12h14l-3 -3m0 6l3 -3" />
                                     </svg>
 
                                     <span className="sr-only"> Search </span>
-                                </a>
+                                </button>
                             </span>
                         </div>
                     </div>
