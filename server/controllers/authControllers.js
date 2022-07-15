@@ -26,9 +26,7 @@ module.exports.signup = async (req, res) => {
     const result = await (await insertCommands.insertUser(username, email, hashedPassword))['0']
 
     const token = generateToken({
-        id: result.id,
-        username: result.username,
-        email: result.email
+        id: result.id
     })
 
     return res.json({
@@ -46,9 +44,7 @@ module.exports.login = async (req, res) => {
 
     if (user && user.password === password) {
         const token = generateToken({
-            id: user.id,
-            username: user.username,
-            email: user.email
+            id: user.id
         })
 
         return res.json({

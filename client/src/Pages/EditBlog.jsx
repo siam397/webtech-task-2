@@ -3,8 +3,7 @@ import Input from "Components/FormInput";
 import React, { useEffect, useState } from "react";
 import Alert from "Components/Alert";
 import { useParams } from "react-router-dom";
-import jwt from 'jwt-decode'
-import Cookie from "universal-cookie"
+
 
 const EditBlog = () => {
 

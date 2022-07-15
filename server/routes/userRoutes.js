@@ -10,6 +10,7 @@ router.route('/:userId')
     .get(userController.getUserById)
     .put(
         body('email').isEmail().withMessage("Not a valid email"),
+        // body('password').isLength({ min: 5 }).withMessage("password too short"),
         userController.updateUser)
 
 

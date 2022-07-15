@@ -9,6 +9,7 @@ const Input = (props) => {
             required={props.required}
             type={props.type}
             defaultValue={props.defaultValue}
+            minLength={props.minLength}
         />
     )
 }
