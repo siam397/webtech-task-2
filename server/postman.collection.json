@@ -1,0 +1,193 @@
+{
+    "info": {
+        "_postman_id": "cb065653-b0f7-43fc-a00b-eedf09a7e641",
+        "name": "WebTechTask2",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "signup",
+            "id": "a25ab14b-b576-4162-925b-89afecc9a3b8",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"username\":\"siam\",\r\n    \"email\":\"siam@cb.com\",\r\n    \"password\":\"123345aA!\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": "http://localhost:8080/signup"
+            },
+            "response": []
+        },
+        {
+            "name": "login",
+            "id": "4bc6cb0a-46c5-4624-a823-9a039e4fe3d1",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"email\":\"siam@cb.com\",\r\n    \"password\":\"123345aA!\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": "http://localhost:3000/login"
+            },
+            "response": []
+        },
+        {
+            "name": "blogs",
+            "id": "241893ff-b388-46d3-b196-bc0c70cc2fbc",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU5MDE2NDMzLCJleHAiOjE2NjQyMDA0MzN9.YG0jvpgpSGcwc-e_e3wgC9n1a8GfltwxKgFUAT37xyo"
+                    }
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"title\":\"CSS Tricks\",\r\n    \"content\":\"Another highly known programming and web development teaching blog developed, written, and maintained by Chris Coyier in 2007 is CSS Tricks. When it was launched, this programming blog solely focused on the central principle of CSS. It now covers everything related to web creation and web design.\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": "http://localhost:8080/blogs"
+            },
+            "response": []
+        },
+        {
+            "name": "get all blogs",
+            "id": "49455fef-a853-4dc1-90de-fcf494cc5f52",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU5MDE2NDMzLCJleHAiOjE2NjQyMDA0MzN9.YG0jvpgpSGcwc-e_e3wgC9n1a8GfltwxKgFUAT37xyo"
+                    }
+                },
+                "method": "GET",
+                "header": [],
+                "url": "http://localhost:8080/blogs"
+            },
+            "response": []
+        },
+        {
+            "name": "get blogs by id",
+            "id": "8e2df763-4557-479b-ac5b-2091f6d64af3",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU5MDE2NDMzLCJleHAiOjE2NjQyMDA0MzN9.YG0jvpgpSGcwc-e_e3wgC9n1a8GfltwxKgFUAT37xyo"
+                    }
+                },
+                "method": "GET",
+                "header": [],
+                "url": "http://localhost:8080/blogs/1"
+            },
+            "response": []
+        },
+        {
+            "name": "Get Blogs Of Single User",
+            "id": "3c16c286-075d-4dfa-a213-e79aac62e8ae",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU5MDE2NDMzLCJleHAiOjE2NjQyMDA0MzN9.YG0jvpgpSGcwc-e_e3wgC9n1a8GfltwxKgFUAT37xyo"
+                    }
+                },
+                "method": "GET",
+                "header": [],
+                "url": "http://localhost:8080/blogs/user/1"
+            },
+            "response": []
+        },
+        {
+            "name": "Update blogs",
+            "id": "54a647d8-d8c1-482f-a36d-2266b70f3f08",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU5MDE2NDMzLCJleHAiOjE2NjQyMDA0MzN9.YG0jvpgpSGcwc-e_e3wgC9n1a8GfltwxKgFUAT37xyo"
+                    }
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"content\":\"Well blog is updated\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": "http://localhost:8080/blogs/1"
+            },
+            "response": []
+        },
+        {
+            "name": "delete news",
+            "id": "7dcff8a7-b206-4bb4-9059-f703edb732be",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU5MDE2NDMzLCJleHAiOjE2NjQyMDA0MzN9.YG0jvpgpSGcwc-e_e3wgC9n1a8GfltwxKgFUAT37xyo"
+                    }
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": "http://localhost:8080/blogs/1"
+            },
+            "response": []
+        },
+        {
+            "name": "Get User By Id",
+            "id": "3b5f80c7-b6af-412d-a2c1-5e842f45dfdf",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU5MDE2NDMzLCJleHAiOjE2NjQyMDA0MzN9.YG0jvpgpSGcwc-e_e3wgC9n1a8GfltwxKgFUAT37xyo"
+                    }
+                },
+                "method": "GET",
+                "header": [],
+                "url": "http://localhost:8080/user/1"
+            },
+            "response": []
+        },
+        {
+            "name": "User Profile",
+            "id": "8f94b46f-ecb0-47a3-909a-dc6ac24a822c",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU5MDE2NDMzLCJleHAiOjE2NjQyMDA0MzN9.YG0jvpgpSGcwc-e_e3wgC9n1a8GfltwxKgFUAT37xyo"
+                    }
+                },
+                "method": "GET",
+                "header": [],
+                "url": "http://localhost:8080/user/currentUser"
+            },
+            "response": []
+        }
+    ]
+}
