@@ -21,6 +21,7 @@ const Blogs = () => {
 
     const getAllBlogs = () => {
         axios.get("blogs").then(res => {
+            console.log(res);
             console.log(res.data.data.blogs);
             setBlogs([...res.data.data.blogs])
         }).catch(err => {
@@ -30,6 +31,7 @@ const Blogs = () => {
 
     const getBlogsOfCurrentUser = () => {
         axios.get("blogs/user").then(res => {
+            console.log(res);
             console.log(res.data.data.blogs);
             setBlogs([...res.data.data.blogs])
         }).catch(err => {

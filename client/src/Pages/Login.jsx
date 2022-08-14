@@ -1,14 +1,23 @@
 import Alert from "Components/Alert";
 import Input from "Components/FormInput";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Cookie from 'universal-cookie'
 import axios from '../Helper/axios'
 const cookie = new Cookie()
 
 const Login = () => {
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState()
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        cookie.remove("accessToken")
+    }, [])
+
     const submitLoginForm = (event) => {
         event.preventDefault()
         const body = {
@@ -19,8 +28,16 @@ const Login = () => {
             let responseData = res['data']
             let accessToken = responseData.accessToken
             console.log(accessToken);
-            cookie.set("accessToken", accessToken, { sameSite: true })
+            cookie.set("accessToken", accessToken, { path: '/' })
+
+            navigate("/blogs/all");
         }).catch(err => {
+
+            if (err.response.status === 403) {
+                let error = err.response.data.message
+                showError(error);
+                return;
+            }
             if (err.response.status === 400 && err.response.data.errors.length > 0) {
                 let error = err.response.data.errors[0]
                 showError(error.msg);
@@ -36,6 +53,8 @@ const Login = () => {
         }, 3000);
         setError(errorMessage)
     }
+
+
 
     return (
         <>

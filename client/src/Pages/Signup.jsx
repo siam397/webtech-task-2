@@ -1,6 +1,7 @@
 import Alert from "Components/Alert"
 import Input from "Components/FormInput"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import Cookie from 'universal-cookie'
 import axios from '../Helper/axios'
 const cookie = new Cookie()
@@ -12,11 +13,18 @@ const Signup = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [error, setError] = useState()
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        cookie.remove("accessToken")
+    }, [])
+
 
     const submitSignupForm = (event) => {
         event.preventDefault()
         if (confirmPassword !== password) {
-            showError("Password and confirm password doesn't match")
+            showError("Password and confirm password doesn't match");
+            return;
         }
         signup();
     }
@@ -30,11 +38,18 @@ const Signup = () => {
         axios.post('signup', body).then(res => {
             let responseData = res['data']
             let accessToken = responseData.accessToken
-            cookie.set("accessToken", accessToken, { sameSite: true })
+            cookie.set("accessToken", accessToken, { path: '/' })
+            navigate("/blogs/all");
         }).catch(err => {
+            console.log(err.response.status);
             if (err.response.status === 400 && err.response.data.errors.length > 0) {
                 let error = err.response.data.errors[0]
                 showError(error.msg);
+                return;
+            }
+            if (err.response.status === 403) {
+                let error = err.response.data.message
+                showError(error);
                 return;
             }
             showError("Something went wrong")

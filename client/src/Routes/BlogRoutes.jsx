@@ -5,7 +5,6 @@ import {
     Navigate,
 } from "react-router-dom";
 import Blogs from "Pages/Blogs";
-import NewBlog from "Pages/EditBlog";
 import BlogDetails from "Pages/BlogDetails";
 import EditBlog from "Pages/EditBlog";
 import ProtectedRoute from "./ProtectedRoute";
@@ -13,6 +12,7 @@ const BlogRoutes = () => {
     return (
         <Routes>
             <Route element={<ProtectedRoute />}>
+                <Route path='/' element={<Navigate to="/blogs/all" />} />
                 <Route path="/blogs" >
                     <Route path=":type" element={<Blogs />}></Route>
                 </Route>

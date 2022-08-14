@@ -7,7 +7,8 @@ const Topbar = () => {
     const navigate = useNavigate()
 
     const logout = () => {
-        cookie.remove("accessToken")
+        console.log("sex");
+        cookie.remove("accessToken", { path: '/' })
         navigate("/login")
     }
 

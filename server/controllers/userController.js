@@ -1,3 +1,4 @@
+const SHA256 = require("crypto-js/sha256");
 const queryCommands = require('../db/dbCommands/queryCommands')
 const updateCommands = require('../db/dbCommands/updateCommands')
 

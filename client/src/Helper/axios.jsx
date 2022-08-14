@@ -4,9 +4,8 @@ const cookies = new Cookies();
 const instance = axios.create({
     baseURL: "http://localhost:8080"
 })
-
+console.log(cookies.get("accessToken"));
 if (cookies.get("accessToken")) {
-    console.log("asdssad");
     let accessToken = cookies.get("accessToken");
     instance.defaults.headers['Authorization'] = `Bearer ${accessToken}`
 }
